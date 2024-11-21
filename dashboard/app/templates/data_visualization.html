@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Visualização de Dados - Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Dashboard de Visualização de Dados</h1>
+
+    <!-- Gráficos -->
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Distribuição de Stroke</h3>
+            <!-- Botão para gerar o gráfico -->
+            <a href="{% url 'generate_graph' graph_type='stroke_percentage' %}" class="btn btn-primary">Gerar Gráfico de Stroke</a>
+        </div>
+        <div class="col-md-4">
+            <h3>Distribuição de Fumantes, Trabalho e Gênero</h3>
+            <!-- Botão para gerar o gráfico -->
+            <a href="{% url 'generate_graph' graph_type='pizza_graphs' %}" class="btn btn-primary">Gerar Gráficos</a>
+        </div>
+        <div class="col-md-4">
+            <h3>Distribuição de Idade, Nível de Glicose e Índice de Massa Corporal (IMC)</h3>
+            <!-- Botão para gerar o gráfico -->
+            <a href="{% url 'generate_graph' graph_type='histograms' %}" class="btn btn-primary">Gerar Gráficos</a>
+        </div>
+        <div class="col-md-4">
+            <h3>Distribuição de AVC por Idade e Nível de Glicose</h3>
+            <!-- Botão para gerar o gráfico -->
+            <a href="{% url 'generate_graph' graph_type='stroke_age' %}" class="btn btn-primary">Gerar Gráficos</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

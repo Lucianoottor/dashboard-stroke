@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}Treinamento de Modelo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Treinamento do Modelo de Predição</h1>
+            <p class="lead text-muted text-center">
+                Aqui você pode treinar o modelo de Machine Learning com os dados existentes e inserir novos dados para prever o risco de stroke.
+            </p>
+
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title">Modelo Treinado</h5>
+                    <p class="card-text">
+                        O modelo foi treinado e está pronto para fazer previsões. O **score** do modelo é: <strong>{{ score }}</strong>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title">Inserir Novo Dado</h5>
+                    <p class="card-text">
+                        Preencha os dados abaixo para prever se o paciente tem risco de stroke.
+                    </p>
+
+                    <form method="POST" action="{% url 'model' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="gender">Sexo</label>
+                            <select class="form-control" id="gender" name="gender">
+                                <option value="Male">Masculino</option>
+                                <option value="Female">Feminino</option>
+                                <option value="Other">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Idade</label>
+                            <input type="number" class="form-control" id="age" name="age" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hypertension">Hipertensão?</label>
+                            <select class="form-control" id="hypertension" name="hypertension">
+                                <option value="Yes">Sim</option>
+                                <option value="No">Não</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="heart_disease">Doença cardíaca?</label>
+                            <select class="form-control" id="heart_disease" name="heart_disease">
+                                <option value="Yes">Sim</option>
+                                <option value="No">Não</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ever_married">Já foi casado?</label>
+                            <select class="form-control" id="ever_married" name="ever_married">
+                                <option value="Yes">Sim</option>
+                                <option value="No">Não</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="work_type">Tipo de Trabalho</label>
+                            <select class="form-control" id="work_type" name="work_type">
+                                <option value="Private">Privado</option>
+                                <option value="Self-employed">Autônomo</option>
+                                <option value="Govt_job">Trabalho Público</option>
+                                <option value="children">Criança</option>
+                                <option value="Never_worked">Nunca trabalhou</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Residence_type">Tipo de Residência</label>
+                            <select class="form-control" id="Residence_type" name="Residence_type">
+                                <option value="Urban">Urbana</option>
+                                <option value="Rural">Rural</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="avg_glucose_level">Nível Médio de Glicose</label>
+                            <input type="number" class="form-control" id="avg_glucose_level" name="avg_glucose_level" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bmi">Índice de Massa Corporal (IMC)</label>
+                            <input type="number" class="form-control" id="bmi" name="bmi" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="smoking_status">Status de Fumo</label>
+                            <select class="form-control" id="smoking_status" name="smoking_status">
+                                <option value="formerly smoked">Fumou no passado</option>
+                                <option value="never smoked">Nunca fumou</option>
+                                <option value="smokes">Fuma</option>
+                                <option value="Unknown">Desconhecido</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Prever Stroke</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

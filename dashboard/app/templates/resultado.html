@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultado da Previsão{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Resultado da Previsão</h1>
+
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title">Resultado do Risco de Stroke</h5>
+                    <p class="card-text">
+                        O modelo fez a previsão com base nos dados fornecidos. O **resultado da previsão** é:
+                        <strong>{{ result }}</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <a href="{% url 'home' %}" class="btn btn-primary">Voltar para a Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
